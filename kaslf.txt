@@ -1,0 +1,138 @@
+
+        <!-- Home Feed -->
+        <section id="home-section" class="feed">
+            <!-- Emergency Post -->
+            <article class="post emergency-post">
+                <div class="post-header">
+                    <div class="post-user">
+                        <div class="user-avatar">JS</div>
+                        <div class="user-info">
+                            <h3>Johny</h3>
+                            <div class="location">📍 Mumbai, Block 15</div>
+                        </div>
+                    </div>
+                    <span class="crisis-badge crisis-fire">High Tide</span>
+                </div>
+                <div class="post-media">
+                    <img src="../static/image.png" style="object-fit:cover ; " alt="Emergency fire situation">
+                </div>
+                <div class="post-content">
+                    <p class="post-text">⚠️ Mumbai, stay safe! High tide in full force at Marine Drive today, with
+                        massive waves crashing against the promenade. The power of the Arabian Sea is truly something to
+                        behold, but also a reminder to exercise extreme caution near coastal areas.
+
+                        Please avoid venturing close to the sea during these conditions. If you're out, be mindful of
+                        strong currents and potential waterlogging. Stay updated with local advisories!</br>
+
+                        #MumbaiHighTide #MonsoonMumbai #StaySafeMumbai #MarineDrive #MumbaiRains #CoastalSafety</p>
+
+
+                </div>
+
+                <div class="post-actions">
+                    <div class="action-buttons">
+                        <!-- <button class="action-btn urgent">🚨 Mark Urgent</button> -->
+                        <button class="action-btn">💬 Comment</button>
+                        <button class="action-btn">🔄 Share</button>
+                        <!-- <button class="action-btn">📞 Contact Reporter</button> -->
+                    </div>
+                    <span class="post-time">2 minutes ago</span>
+                </div>
+            </article>
+
+
+            <!-- Medical Emergency Post -->
+            <!-- <article class="post">
+                <div class="post-header">
+                    <div class="post-user">
+                        <div class="user-avatar">MR</div>
+                        <div class="user-info">
+                            <h3>Maria Rodriguez</h3>
+                            <div class="location">📍 Highway 45, Mile Marker 23</div>
+                        </div>
+                    </div>
+                    <span class="crisis-badge crisis-accident">Accident</span>
+                </div>
+
+                <div class="post-content">
+                    <p class="post-text">Multi-car accident on Highway 45. Several people injured. Ambulances needed
+                        urgently. Traffic is completely blocked in both directions. Please avoid this route and share
+                        for emergency services coordination.</p>
+                </div>
+
+                <div class="post-actions">
+                    <div class="action-buttons">
+                        <button class="action-btn urgent">🚨 Mark Urgent</button>
+                        <button class="action-btn">💬 Comment</button>
+                        <button class="action-btn">🔄 Share</button>
+                        <button class="action-btn">📞 Contact Reporter</button>
+                    </div>
+                    <span class="post-time">8 minutes ago</span>
+                </div>
+            </article> -->
+
+            <!-- Flood Warning Post -->
+            <article class="post">
+                <div class="post-header">
+                    <div class="post-user">
+                        <div class="user-avatar">DL</div>
+                        <div class="user-info">
+                            <h3>Ramesh </h3>
+                            <div class="location">📍 Riverside District,suraj </div>
+                        </div>
+                    </div>
+                    <span class="crisis-badge crisis-flood">Flood</span>
+                </div>
+
+                <div class="post-content">
+                    <div class="post-media">
+                       <video src="../static/20250902-1337-32.4095751.mp4"style="background-color:lightgray" autoplay muted loop ></video>
+                    </div>
+                    <p class="post-text">Water levels rising rapidly in Riverside District. Several streets are already
+                        impassable. Residents in low-lying areas should evacuate immediately. Emergency shelters are
+                        being set up at the community center.</p>
+
+                    
+                </div>
+
+                <div class="post-actions">
+                    <div class="action-buttons" >
+                        <!-- <button class="action-btn urgent">🚨 Mark Urgent</button> -->
+                        <button class="action-btn">💬 Comment</button>
+                        <button class="action-btn">🔄 Share</button>
+                        <!-- <button class="action-btn">📞 Contact Reporter</button> -->
+                    </div>
+                    <span class="post-time">15 minutes ago</span>
+                </div>
+            </article>
+
+            <!-- Medical Emergency -->
+            <!-- <article class="post">
+                <div class="post-header">
+                    <div class="post-user">
+                        <div class="user-avatar">SK</div>
+                        <div class="user-info">
+                            <h3>Sarah Kim</h3>
+                            <div class="location">📍 City Park, Near Main Entrance</div>
+                        </div>
+                    </div>
+                    <span class="crisis-badge crisis-medical">Medical Emergency</span>
+                </div>
+
+                <div class="post-content">
+                    <p class="post-text">Elderly man collapsed during morning jog in City Park. CPR being administered
+                        by bystanders. Ambulance called but taking time to arrive due to traffic. Any medical
+                        professionals nearby please respond immediately.</p>
+                </div>
+
+                <div class="post-actions">
+                    <div class="action-buttons">
+                        <button class="action-btn urgent">🚨 Mark Urgent</button>
+                        <button class="action-btn">💬 Comment</button>
+                        <button class="action-btn">🔄 Share</button>
+                        <button class="action-btn">📞 Contact Reporter</button>
+                    </div>
+                    <span class="post-time">22 minutes ago</span>
+                </div>
+            </article> -->
+        </section>
