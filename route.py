@@ -2,7 +2,7 @@
 # from pymongo import MongoClient
 # import gridfs 
 
-# client = MongoClient("mongodb+srv://vishaltestdatabase:YhXCSO8n8f2UTMFU@cluster0.4crcv.mongodb.net/")
+# client = MongoClient("mongodb+srv://---------redacted---------:----------redacted-----------@cluster0.4crcv.mongodb.net/")
 # db = client["CrisisReport"]
 # collection = db["reports"]
 
@@ -37,7 +37,7 @@
 #     app.run(debug=True)
 
 
-
+import os
 from flask import Flask, render_template, request, url_for, redirect,render_template_string,jsonify
 from pymongo import MongoClient
 import gridfs
@@ -45,14 +45,15 @@ from datetime import datetime
 import folium 
 import folium.plugins
 from opencage.geocoder import OpenCageGeocode
+from dotenv import load_dotenv
 
 # Add these imports at the top of route.py
 from bson.objectid import ObjectId
 from flask import send_file
 import io
 
-
-client = MongoClient("mongodb+srv://vishaltestdatabase:YhXCSO8n8f2UTMFU@cluster0.4crcv.mongodb.net/")
+mongodb_uri=os.getenv("mongodb_uri")
+client = MongoClient(mongodb_uri)
 db = client["CrisisReport"]
 collection = db["reports"]
 fs = gridfs.GridFS(db)
@@ -214,86 +215,88 @@ def form():
                                   
     # #         </html>''',header=header,map=map,script=script)
     # return render_template('citizen.html',header=header,map=map,script=script)
-@app.route("/map")
-def map_view():
-    # Create map centered at India
-    foliumMap = folium.Map(
-        location=[20.5937, 78.9629],
-        zoom_start=5,
-        tiles='OpenStreetMap'
-    )
+# @app.route("/map")
+# def map_view():
+#     # Create map centered at India
+#     foliumMap = folium.Map(
+#         location=[20.5937, 78.9629],
+#         zoom_start=5,
+#         tiles='OpenStreetMap'
+#     )
 
-    # Fetch all reports from MongoDB
-    reports = collection.find()
+#     # Fetch all reports from MongoDB
+#     reports = collection.find()
+#     print(reports)
+#     # Add markers for each report
+#     for report in reports:
+#         # Try to extract coordinates from location string (assuming format: "lat, long")
+#         try:
+#             lat, lng = float(report.get('lat')), float(report.get('lng'))
 
-    # Add markers for each report
-    for report in reports:
-        # Try to extract coordinates from location string (assuming format: "lat, long")
-        try:
-            lat, lng = float(report.get('lat')), float(report.get('lng'))
-
-            # Create popup content
-            # popup_content = f"""
-            #     <div style='width:200px'>
-            #         <h4>{report['crisis_type']}</h4>
-            #         <p>{report['description']}</p>
-            #         <small>{report['timestamp'].strftime('%Y-%m-%d %H:%M')}</small>
-            #     </div>
-            # """
+#             # Create popup content
+#             # popup_content = f"""
+#             #     <div style='width:200px'>
+#             #         <h4>{report['crisis_type']}</h4>
+#             #         <p>{report['description']}</p>
+#             #         <small>{report['timestamp'].strftime('%Y-%m-%d %H:%M')}</small>
+#             #     </div>
+#             # """
             
-            # Choose icon color based on crisis type
-            # icon_color = 'red' if '🚧 Hazard' in report['crisis_type'] else 'blue'
-            # Add pulsating effect CSS
-            heatwave_css = """
-            <style>
-            .pulse {
-              position: relative;
-              width: 20px;
-              height: 20px;
-              background: rgba(0, 123, 255, 0.5);  /* default blue */
-              border-radius: 50%;
-            }
-            .pulse::after {
-              content: "";
-              position: absolute;
-              width: 20px;
-              height: 20px;
-              border-radius: 50%;
-              background: inherit;
-              animation: pulse-animation 2s infinite;
-            }
-            @keyframes pulse-animation {
-              0% { transform: scale(1); opacity: 0.7; }
-              70% { transform: scale(3); opacity: 0; }
-              100% { transform: scale(1); opacity: 0; }
-            }
-            .pulse-red { background: rgba(255, 0, 0, 0.5); }
-            .pulse-blue { background: rgba(0, 123, 255, 0.5); }
-            .pulse-orange { background: rgba(255, 165, 0, 0.5); }
-            </style>
-            """
-            foliumMap.get_root().html.add_child(folium.Element(heatwave_css))
+#             # Choose icon color based on crisis type
+#             # icon_color = 'red' if '🚧 Hazard' in report['crisis_type'] else 'blue'
+#             # Add pulsating effect CSS
+#             heatwave_css = """
+#             <style>
+#             .pulse {
+#               position: relative;
+#               width: 20px;
+#               height: 20px;
+#               background: rgba(0, 123, 255, 0.5);  /* default blue */
+#               border-radius: 50%;
+#             }
+#             .pulse::after {
+#               content: "";
+#               position: absolute;
+#               width: 20px;
+#               height: 20px;
+#               border-radius: 50%;
+#               background: inherit;
+#               animation: pulse-animation 2s infinite;
+#             }
+#             @keyframes pulse-animation {
+#               0% { transform: scale(1); opacity: 0.7; }
+#               70% { transform: scale(3); opacity: 0; }
+#               100% { transform: scale(1); opacity: 0; }
+#             }
+#             .pulse-red { background: rgba(255, 0, 0, 0.5); }
+#             .pulse-blue { background: rgba(0, 123, 255, 0.5); }
+#             .pulse-orange { background: rgba(255, 165, 0, 0.5); }
+#             </style>
+#             """
+#             foliumMap.get_root().html.add_child(folium.Element(heatwave_css))
             
+          
+#             markers = []
+    
             
+#             # Add marker to map
+#             if '🚧 Hazard' in report['crisis_type']:
+#                 color_class = 'pulse-red'
+#             elif '⚠️ Information' in report['crisis_type']:
+#                 color_class = 'pulse-blue'
+#             else :
+#                 color_class = 'pulse-orange'
             
-            # Add marker to map
-            if '🚧 Hazard' in report['crisis_type']:
-                color_class = 'pulse-red'
-            elif '⚠️ Information' in report['crisis_type']:
-                color_class = 'pulse-blue'
-            else :
-                color_class = 'pulse-orange'
-            
-            folium.Marker(
-                location=[lat, lng],
-                popup=f"type:{report['crisis_type']}, description:{report['description']}, timestamp:{report['timestamp'].strftime('%Y-%m-%d %H:%M')}",
-                icon=folium.DivIcon(
-                html=f'<div class="pulse {color_class}"></div>'
-            ),
-                tooltip=report['crisis_type']
-            ).add_to(foliumMap)
-        except:
-            continue
+#             folium.Marker(
+#                 location=[lat, lng],
+#                 popup=f"type:{report['crisis_type']}, description:{report['description']}, timestamp:{report['timestamp'].strftime('%Y-%m-%d %H:%M')}",
+#                 icon=folium.DivIcon(
+#                 html=f'<div class="pulse {color_class}"></div>'
+#             ),
+#                 tooltip=report['crisis_type']
+#             ).add_to(foliumMap)
+#         except:
+#             continue
 
     # Add search control
     # foliumMap.add_child(folium.plugins.Search(
@@ -303,44 +306,139 @@ def map_view():
     # ))
 
     # Add fullscreen control
+    # foliumMap.add_child(folium.plugins.Fullscreen())
+
+    # # Add layer control
+    # folium.LayerControl().add_to(foliumMap)
+
+    # # Get map components
+    # foliumMap.get_root().render()
+    # header = foliumMap.get_root().header.render()
+    # map_html = foliumMap.get_root().html.render()
+    # script = foliumMap.get_root().script.render()
+
+    # return render_template('citizen.html', header=header, map=map_html, script=script)
+
+
+# @app.route("/markers")
+# def get_markers():
+#     reports = collection.find()
+#     markers = []
+    
+#     for report in reports:
+#         try:
+#             markers.append({
+#                 'lat': float(report.get('lat')),
+#                 'lng': float(report.get('lng')),
+#                 'type': report.get('crisis_type'),
+#                 'description': report.get('description'),
+#                 'timestamp': report.get('timestamp').strftime('%Y-%m-%d %H:%M')
+#             })
+#         except:
+#             continue
+    
+#     return jsonify(markers)
+
+
+@app.route("/map")
+def map_view():
+    # Create map centered at India (Vadodara coordinates)
+    foliumMap = folium.Map(
+        location=[20.5937, 78.9629],
+        zoom_start=5,
+        tiles='OpenStreetMap'
+    )
+    
+    # Fetch all reports from MongoDB
+    reports = collection.find()
+    # print(reports)
+    
+    # CSS for pulsating effect
+    heatwave_css = """
+    <style>
+    .pulse {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        background: rgba(0, 123, 255, 0.5); /* default blue */
+        border-radius: 50%;
+    }
+    .pulse::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: inherit;
+        animation: pulse-animation 2s infinite;
+    }
+    @keyframes pulse-animation {
+        0% { transform: scale(1); opacity: 0.7; }
+        70% { transform: scale(3); opacity: 0; }
+        100% { transform: scale(1); opacity: 0; }
+    }
+    .pulse-red { background: rgba(255, 0, 0, 0.5); }
+    .pulse-blue { background: rgba(0, 123, 255, 0.5); }
+    .pulse-orange { background: rgba(255, 165, 0, 0.5); }
+    </style>
+    """
+    
+    # Add CSS to map
+    foliumMap.get_root().html.add_child(folium.Element(heatwave_css))
+    
+    # Add markers for each report
+    for report in reports:
+        try:
+            # Extract coordinates from location string (assuming format: "lat, lng")
+            lat, lng = float(report.get('lat')), float(report.get('lng'))
+            
+            # Choose icon color based on crisis type
+            if '🚧 Hazard' in report['crisis_type']:
+                color_class = 'pulse-red'
+            elif '⚠️ Information' in report['crisis_type']:
+                color_class = 'pulse-blue'
+            else:
+                color_class = 'pulse-orange'
+            
+            # Create popup content
+            popup_content = f"""
+            <div style='width:200px'>
+                <h4>{report['location']}</h4>
+                <h4>{report['crisis_type']}</h4>
+                <p>{report['description']}</p>
+                <small>{report['timestamp'].strftime('%Y-%m-%d %H:%M')}</small>
+            </div>
+            """
+            
+            # Add marker to map
+            folium.Marker(
+                location=[lat, lng],
+                popup=popup_content,
+                icon=folium.DivIcon(
+                    html=f'<div class="pulse {color_class}"></div>',
+                    icon_size=(20, 20)
+                ),
+                tooltip=report['crisis_type']
+            ).add_to(foliumMap)
+            
+        except (ValueError, KeyError, TypeError) as e:
+            print(f"Error processing report: {e}")
+            continue
+
+    # Add fullscreen control
+    
     foliumMap.add_child(folium.plugins.Fullscreen())
 
     # Add layer control
-    folium.LayerControl().add_to(foliumMap)
+    # folium.LayerControl().add_to(foliumMap)
+    foliumMap.save('templates/map.html',)
 
-    # Get map components
-    foliumMap.get_root().render()
-    header = foliumMap.get_root().header.render()
-    map_html = foliumMap.get_root().html.render()
-    script = foliumMap.get_root().script.render()
-
-    return render_template('citizen.html', header=header, map=map_html, script=script)
+    return render_template('map.html')
 
 
-from flask import jsonify
-
-@app.route("/markers")
-def get_markers():
-    reports = collection.find()
-    markers = []
-    
-    for report in reports:
-        try:
-            markers.append({
-                'lat': float(report.get('lat')),
-                'lng': float(report.get('lng')),
-                'type': report.get('crisis_type'),
-                'description': report.get('description'),
-                'timestamp': report.get('timestamp').strftime('%Y-%m-%d %H:%M')
-            })
-        except:
-            continue
-    
-    return jsonify(markers)
-
-
-
-
+@app.route('/admin')
+def admin():
+    return render_template('admin.html', pending_reports=collection.find({"status": "pending"}))
 
 
 

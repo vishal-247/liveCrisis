@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7667138ca7fc252d402b85bd9ce9ce5b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+</head>
+<body>
+    
+    
+    <style>
+    .pulse {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        background: rgba(0, 123, 255, 0.5); /* default blue */
+        border-radius: 50%;
+    }
+    .pulse::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: inherit;
+        animation: pulse-animation 2s infinite;
+    }
+    @keyframes pulse-animation {
+        0% { transform: scale(1); opacity: 0.7; }
+        70% { transform: scale(3); opacity: 0; }
+        100% { transform: scale(1); opacity: 0; }
+    }
+    .pulse-red { background: rgba(255, 0, 0, 0.5); }
+    .pulse-blue { background: rgba(0, 123, 255, 0.5); }
+    .pulse-orange { background: rgba(255, 165, 0, 0.5); }
+    </style>
+    
+    
+            <div class="folium-map" id="map_7667138ca7fc252d402b85bd9ce9ce5b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_7667138ca7fc252d402b85bd9ce9ce5b = L.map(
+                "map_7667138ca7fc252d402b85bd9ce9ce5b",
+                {
+                    center: [20.5937, 78.9629],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_cfde59789c5db494a45a77ea961838f3 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_cfde59789c5db494a45a77ea961838f3.addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var marker_5b8bf19cfe91abf53e6928092787b7ed = L.marker(
+                [22.2973142, 73.1942567],
+                {
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var div_icon_9d09f9734256b1974d3dcedd448cfa0f = L.divIcon({
+  "html": "\u003cdiv class=\"pulse pulse-blue\"\u003e\u003c/div\u003e",
+  "iconSize": [20, 20],
+  "className": "empty",
+});
+        
+    
+        var popup_c6f871e4cea7b3cce81a8f19b7230114 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_66670e5f868c5c2cb3c505408c7e56ae = $(`<div id="html_66670e5f868c5c2cb3c505408c7e56ae" style="width: 100.0%; height: 100.0%;">             <div style='width:200px'>                 <h4>Vadodara</h4>                 <h4>⚠️ Information</h4>                 <p>Heavy and fast wind</p>                 <small>2025-09-03 22:17</small>             </div>             </div>`)[0];
+                popup_c6f871e4cea7b3cce81a8f19b7230114.setContent(html_66670e5f868c5c2cb3c505408c7e56ae);
+            
+        
+
+        marker_5b8bf19cfe91abf53e6928092787b7ed.bindPopup(popup_c6f871e4cea7b3cce81a8f19b7230114)
+        ;
+
+        
+    
+    
+            marker_5b8bf19cfe91abf53e6928092787b7ed.bindTooltip(
+                `<div>
+                     ⚠️ Information
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5b8bf19cfe91abf53e6928092787b7ed.setIcon(div_icon_9d09f9734256b1974d3dcedd448cfa0f);
+            
+    
+            var marker_d75ba2a396a9378b33acd6b09a762bfd = L.marker(
+                [22.2960823, 73.2538443],
+                {
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var div_icon_1d28b643e2fd68a11e91a2b053e05259 = L.divIcon({
+  "html": "\u003cdiv class=\"pulse pulse-red\"\u003e\u003c/div\u003e",
+  "iconSize": [20, 20],
+  "className": "empty",
+});
+        
+    
+        var popup_c4d1d1553953107264d230e088f867f8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_da3edb6b9f2004c936186ff15dde0481 = $(`<div id="html_da3edb6b9f2004c936186ff15dde0481" style="width: 100.0%; height: 100.0%;">             <div style='width:200px'>                 <h4>waghodiya</h4>                 <h4>🚧 Hazard</h4>                 <p>jhhvjhb</p>                 <small>2025-09-03 22:23</small>             </div>             </div>`)[0];
+                popup_c4d1d1553953107264d230e088f867f8.setContent(html_da3edb6b9f2004c936186ff15dde0481);
+            
+        
+
+        marker_d75ba2a396a9378b33acd6b09a762bfd.bindPopup(popup_c4d1d1553953107264d230e088f867f8)
+        ;
+
+        
+    
+    
+            marker_d75ba2a396a9378b33acd6b09a762bfd.bindTooltip(
+                `<div>
+                     🚧 Hazard
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d75ba2a396a9378b33acd6b09a762bfd.setIcon(div_icon_1d28b643e2fd68a11e91a2b053e05259);
+            
+    
+            var marker_53d21ffc88348fa91d9dc7503855aba4 = L.marker(
+                [22.2973142, 73.1942567],
+                {
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var div_icon_0d92d143a8656573540e22ed7a4d0153 = L.divIcon({
+  "html": "\u003cdiv class=\"pulse pulse-blue\"\u003e\u003c/div\u003e",
+  "iconSize": [20, 20],
+  "className": "empty",
+});
+        
+    
+        var popup_e1a3823d06139c6edd1162437e7da688 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_75325ffab65110d59451a890a23e462d = $(`<div id="html_75325ffab65110d59451a890a23e462d" style="width: 100.0%; height: 100.0%;">             <div style='width:200px'>                 <h4>vadodara</h4>                 <h4>⚠️ Information</h4>                 <p>,n jb </p>                 <small>2025-09-03 22:30</small>             </div>             </div>`)[0];
+                popup_e1a3823d06139c6edd1162437e7da688.setContent(html_75325ffab65110d59451a890a23e462d);
+            
+        
+
+        marker_53d21ffc88348fa91d9dc7503855aba4.bindPopup(popup_e1a3823d06139c6edd1162437e7da688)
+        ;
+
+        
+    
+    
+            marker_53d21ffc88348fa91d9dc7503855aba4.bindTooltip(
+                `<div>
+                     ⚠️ Information
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_53d21ffc88348fa91d9dc7503855aba4.setIcon(div_icon_0d92d143a8656573540e22ed7a4d0153);
+            
+    
+            var marker_ac5a9d88a6e8ef6ddf561e083fc2530b = L.marker(
+                [22.2887492, 73.3638405],
+                {
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var div_icon_bac48641c5de218b8f7ff2d3fe3e8f82 = L.divIcon({
+  "html": "\u003cdiv class=\"pulse pulse-red\"\u003e\u003c/div\u003e",
+  "iconSize": [20, 20],
+  "className": "empty",
+});
+        
+    
+        var popup_0f74b839dc3d7444a9d51d165276a550 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_efd9cb64329173bae51328f8fe602b45 = $(`<div id="html_efd9cb64329173bae51328f8fe602b45" style="width: 100.0%; height: 100.0%;">             <div style='width:200px'>                 <h4>parul university</h4>                 <h4>🚧 Hazard</h4>                 <p>kmlkjm</p>                 <small>2025-09-03 22:30</small>             </div>             </div>`)[0];
+                popup_0f74b839dc3d7444a9d51d165276a550.setContent(html_efd9cb64329173bae51328f8fe602b45);
+            
+        
+
+        marker_ac5a9d88a6e8ef6ddf561e083fc2530b.bindPopup(popup_0f74b839dc3d7444a9d51d165276a550)
+        ;
+
+        
+    
+    
+            marker_ac5a9d88a6e8ef6ddf561e083fc2530b.bindTooltip(
+                `<div>
+                     🚧 Hazard
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ac5a9d88a6e8ef6ddf561e083fc2530b.setIcon(div_icon_bac48641c5de218b8f7ff2d3fe3e8f82);
+            
+    
+            var marker_643a8976e22a8ee759dfbbe57b29e251 = L.marker(
+                [45.77581, 21.84547],
+                {
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var div_icon_e1184b63e7132f5d9423b427f5086aa2 = L.divIcon({
+  "html": "\u003cdiv class=\"pulse pulse-blue\"\u003e\u003c/div\u003e",
+  "iconSize": [20, 20],
+  "className": "empty",
+});
+        
+    
+        var popup_583b0fd373967a3da7797aecc4223a06 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_34bd239e77c7b57cd24442d6b2eafc43 = $(`<div id="html_34bd239e77c7b57cd24442d6b2eafc43" style="width: 100.0%; height: 100.0%;">             <div style='width:200px'>                 <h4>parul</h4>                 <h4>⚠️ Information</h4>                 <p>khiuh</p>                 <small>2025-09-03 22:31</small>             </div>             </div>`)[0];
+                popup_583b0fd373967a3da7797aecc4223a06.setContent(html_34bd239e77c7b57cd24442d6b2eafc43);
+            
+        
+
+        marker_643a8976e22a8ee759dfbbe57b29e251.bindPopup(popup_583b0fd373967a3da7797aecc4223a06)
+        ;
+
+        
+    
+    
+            marker_643a8976e22a8ee759dfbbe57b29e251.bindTooltip(
+                `<div>
+                     ⚠️ Information
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_643a8976e22a8ee759dfbbe57b29e251.setIcon(div_icon_e1184b63e7132f5d9423b427f5086aa2);
+            
+    
+            var marker_647f92cd5e16268eb472466361138c78 = L.marker(
+                [37.2923691, -78.7336193],
+                {
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var div_icon_f8b6173bbe487fd7c315ad387ebfd1f5 = L.divIcon({
+  "html": "\u003cdiv class=\"pulse pulse-red\"\u003e\u003c/div\u003e",
+  "iconSize": [20, 20],
+  "className": "empty",
+});
+        
+    
+        var popup_9fbe2a547b8db41b48092ac7bc0d89c9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_19d64e47f04515cbaec5071ce1e83c9d = $(`<div id="html_19d64e47f04515cbaec5071ce1e83c9d" style="width: 100.0%; height: 100.0%;">             <div style='width:200px'>                 <h4>Flood</h4>                 <h4>🚧 Hazard</h4>                 <p>Flood near the coasts of tamil nadu</p>                 <small>2025-09-03 22:32</small>             </div>             </div>`)[0];
+                popup_9fbe2a547b8db41b48092ac7bc0d89c9.setContent(html_19d64e47f04515cbaec5071ce1e83c9d);
+            
+        
+
+        marker_647f92cd5e16268eb472466361138c78.bindPopup(popup_9fbe2a547b8db41b48092ac7bc0d89c9)
+        ;
+
+        
+    
+    
+            marker_647f92cd5e16268eb472466361138c78.bindTooltip(
+                `<div>
+                     🚧 Hazard
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_647f92cd5e16268eb472466361138c78.setIcon(div_icon_f8b6173bbe487fd7c315ad387ebfd1f5);
+            
+    
+            var marker_c5e51c8e1de55c423cdbb7d61297a56a = L.marker(
+                [22.29230086739921, 73.35960744427904],
+                {
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var div_icon_53ea0f60c26952304f5c3192b1457af7 = L.divIcon({
+  "html": "\u003cdiv class=\"pulse pulse-red\"\u003e\u003c/div\u003e",
+  "iconSize": [20, 20],
+  "className": "empty",
+});
+        
+    
+        var popup_1d0aeb310be762158ea081c87f9bee28 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_102aada2d16389301b468b2090fe793b = $(`<div id="html_102aada2d16389301b468b2090fe793b" style="width: 100.0%; height: 100.0%;">             <div style='width:200px'>                 <h4>Homeopathy Parking, SH158, Vadodara, Waghodia - 391760, Gujarat, India</h4>                 <h4>🚧 Hazard</h4>                 <p>Flood</p>                 <small>2025-09-03 22:33</small>             </div>             </div>`)[0];
+                popup_1d0aeb310be762158ea081c87f9bee28.setContent(html_102aada2d16389301b468b2090fe793b);
+            
+        
+
+        marker_c5e51c8e1de55c423cdbb7d61297a56a.bindPopup(popup_1d0aeb310be762158ea081c87f9bee28)
+        ;
+
+        
+    
+    
+            marker_c5e51c8e1de55c423cdbb7d61297a56a.bindTooltip(
+                `<div>
+                     🚧 Hazard
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c5e51c8e1de55c423cdbb7d61297a56a.setIcon(div_icon_53ea0f60c26952304f5c3192b1457af7);
+            
+    
+            var marker_a95582d783076245d32ccb569c46a108 = L.marker(
+                [22.2973142, 73.1942567],
+                {
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var div_icon_317095037459226f20932d0e24e24fa6 = L.divIcon({
+  "html": "\u003cdiv class=\"pulse pulse-red\"\u003e\u003c/div\u003e",
+  "iconSize": [20, 20],
+  "className": "empty",
+});
+        
+    
+        var popup_35f4f9123755fc03f403067fe47bdb0f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_37c38813e9f1389ceda71fd7e990bc51 = $(`<div id="html_37c38813e9f1389ceda71fd7e990bc51" style="width: 100.0%; height: 100.0%;">             <div style='width:200px'>                 <h4>vadodara</h4>                 <h4>🚧 Hazard</h4>                 <p>k;skdgj;dlkj</p>                 <small>2025-09-03 23:05</small>             </div>             </div>`)[0];
+                popup_35f4f9123755fc03f403067fe47bdb0f.setContent(html_37c38813e9f1389ceda71fd7e990bc51);
+            
+        
+
+        marker_a95582d783076245d32ccb569c46a108.bindPopup(popup_35f4f9123755fc03f403067fe47bdb0f)
+        ;
+
+        
+    
+    
+            marker_a95582d783076245d32ccb569c46a108.bindTooltip(
+                `<div>
+                     🚧 Hazard
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a95582d783076245d32ccb569c46a108.setIcon(div_icon_317095037459226f20932d0e24e24fa6);
+            
+    
+            var marker_a380718120f0f160693e0d88f983ba0d = L.marker(
+                [22.266976059687792, 73.21701058113916],
+                {
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var div_icon_67af32d0fd67dbc8256822d118698b2f = L.divIcon({
+  "html": "\u003cdiv class=\"pulse pulse-blue\"\u003e\u003c/div\u003e",
+  "iconSize": [20, 20],
+  "className": "empty",
+});
+        
+    
+        var popup_fb7bbed8fc3ead577d2a4b362e6e9a09 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b491a26a1b9c65f277e32b542664e18a = $(`<div id="html_b491a26a1b9c65f277e32b542664e18a" style="width: 100.0%; height: 100.0%;">             <div style='width:200px'>                 <h4>unnamed road, Vadodara, Vadodara - 390001, Gujarat, India</h4>                 <h4>⚠️ Information</h4>                 <p>water logging</p>                 <small>2025-09-03 23:15</small>             </div>             </div>`)[0];
+                popup_fb7bbed8fc3ead577d2a4b362e6e9a09.setContent(html_b491a26a1b9c65f277e32b542664e18a);
+            
+        
+
+        marker_a380718120f0f160693e0d88f983ba0d.bindPopup(popup_fb7bbed8fc3ead577d2a4b362e6e9a09)
+        ;
+
+        
+    
+    
+            marker_a380718120f0f160693e0d88f983ba0d.bindTooltip(
+                `<div>
+                     ⚠️ Information
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a380718120f0f160693e0d88f983ba0d.setIcon(div_icon_67af32d0fd67dbc8256822d118698b2f);
+            
+    
+            var marker_4f84ea0703f32ed2cb7ba0f9f85bde16 = L.marker(
+                [22.3081802, 73.1440391],
+                {
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var div_icon_260efc8ba4953c220b24e8603f44f218 = L.divIcon({
+  "html": "\u003cdiv class=\"pulse pulse-blue\"\u003e\u003c/div\u003e",
+  "iconSize": [20, 20],
+  "className": "empty",
+});
+        
+    
+        var popup_8b24b3ac6b51fe9c6754c4a4fda0a283 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dd2741f552cf06d2366d93f9f5d1eb3e = $(`<div id="html_dd2741f552cf06d2366d93f9f5d1eb3e" style="width: 100.0%; height: 100.0%;">             <div style='width:200px'>                 <h4>unnamed road, Saiyed Vasna, - 390021, Gujarat, India</h4>                 <h4>⚠️ Information</h4>                 <p>Helllloòooo!!!!!!!!!</p>                 <small>2025-09-03 23:17</small>             </div>             </div>`)[0];
+                popup_8b24b3ac6b51fe9c6754c4a4fda0a283.setContent(html_dd2741f552cf06d2366d93f9f5d1eb3e);
+            
+        
+
+        marker_4f84ea0703f32ed2cb7ba0f9f85bde16.bindPopup(popup_8b24b3ac6b51fe9c6754c4a4fda0a283)
+        ;
+
+        
+    
+    
+            marker_4f84ea0703f32ed2cb7ba0f9f85bde16.bindTooltip(
+                `<div>
+                     ⚠️ Information
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4f84ea0703f32ed2cb7ba0f9f85bde16.setIcon(div_icon_260efc8ba4953c220b24e8603f44f218);
+            
+    
+            var marker_430320e2744fb2249a5bd639cf7a2b3a = L.marker(
+                [22.319035, 73.135666],
+                {
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var div_icon_a4c6134e8b7e1d11df628117c3b1fa30 = L.divIcon({
+  "html": "\u003cdiv class=\"pulse pulse-red\"\u003e\u003c/div\u003e",
+  "iconSize": [20, 20],
+  "className": "empty",
+});
+        
+    
+        var popup_5b1136fbfff00ec2a7645d6e9313e6e2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_267f75e4220df3184eabfa9285ab2a4b = $(`<div id="html_267f75e4220df3184eabfa9285ab2a4b" style="width: 100.0%; height: 100.0%;">             <div style='width:200px'>                 <h4>unnamed road, Gotri, - 391101, Gujarat, India</h4>                 <h4>🚧 Hazard</h4>                 <p>Severe flooding in the area due to continuous heavy rainfall . roads are blocked ,electricity is cut , and people are trapped on rooftops. Immediate rescue boats and medical assistance are needed .🏊‍♀️🌊🌧️</p>                 <small>2025-09-03 23:20</small>             </div>             </div>`)[0];
+                popup_5b1136fbfff00ec2a7645d6e9313e6e2.setContent(html_267f75e4220df3184eabfa9285ab2a4b);
+            
+        
+
+        marker_430320e2744fb2249a5bd639cf7a2b3a.bindPopup(popup_5b1136fbfff00ec2a7645d6e9313e6e2)
+        ;
+
+        
+    
+    
+            marker_430320e2744fb2249a5bd639cf7a2b3a.bindTooltip(
+                `<div>
+                     🚧 Hazard
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_430320e2744fb2249a5bd639cf7a2b3a.setIcon(div_icon_a4c6134e8b7e1d11df628117c3b1fa30);
+            
+    
+            var marker_215a20a038a3766d3ce51e7e605c26fb = L.marker(
+                [53.0131501, 32.3931633],
+                {
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var div_icon_e1b5004327886fcd4c79a5cc9f116eb7 = L.divIcon({
+  "html": "\u003cdiv class=\"pulse pulse-red\"\u003e\u003c/div\u003e",
+  "iconSize": [20, 20],
+  "className": "empty",
+});
+        
+    
+        var popup_36f86837fbe687798d3ed99a172e7022 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_301123025a5da38c9a0a7700cb3d4114 = $(`<div id="html_301123025a5da38c9a0a7700cb3d4114" style="width: 100.0%; height: 100.0%;">             <div style='width:200px'>                 <h4>Suraj</h4>                 <h4>🚧 Hazard</h4>                 <p>Suraj me aggg lagi h</p>                 <small>2025-09-03 23:32</small>             </div>             </div>`)[0];
+                popup_36f86837fbe687798d3ed99a172e7022.setContent(html_301123025a5da38c9a0a7700cb3d4114);
+            
+        
+
+        marker_215a20a038a3766d3ce51e7e605c26fb.bindPopup(popup_36f86837fbe687798d3ed99a172e7022)
+        ;
+
+        
+    
+    
+            marker_215a20a038a3766d3ce51e7e605c26fb.bindTooltip(
+                `<div>
+                     🚧 Hazard
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_215a20a038a3766d3ce51e7e605c26fb.setIcon(div_icon_e1b5004327886fcd4c79a5cc9f116eb7);
+            
+    
+            var marker_ae0985a981d54ff76de534ed19438a4c = L.marker(
+                [22.29231532163081, 73.35959254792252],
+                {
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var div_icon_61e4c340fa710c9722a5463a4c1d5c95 = L.divIcon({
+  "html": "\u003cdiv class=\"pulse pulse-blue\"\u003e\u003c/div\u003e",
+  "iconSize": [20, 20],
+  "className": "empty",
+});
+        
+    
+        var popup_9e6a4228d026d38ab1e663c92c5c2f5c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a4b5134e3ca11fbb5d39d82f97bb6196 = $(`<div id="html_a4b5134e3ca11fbb5d39d82f97bb6196" style="width: 100.0%; height: 100.0%;">             <div style='width:200px'>                 <h4>Homeopathy Parking, SH158, Vadodara, Waghodia - 391760, Gujarat, India</h4>                 <h4>⚠️ Information</h4>                 <p>Flood due to severe rainfall </p>                 <small>2025-09-03 23:33</small>             </div>             </div>`)[0];
+                popup_9e6a4228d026d38ab1e663c92c5c2f5c.setContent(html_a4b5134e3ca11fbb5d39d82f97bb6196);
+            
+        
+
+        marker_ae0985a981d54ff76de534ed19438a4c.bindPopup(popup_9e6a4228d026d38ab1e663c92c5c2f5c)
+        ;
+
+        
+    
+    
+            marker_ae0985a981d54ff76de534ed19438a4c.bindTooltip(
+                `<div>
+                     ⚠️ Information
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ae0985a981d54ff76de534ed19438a4c.setIcon(div_icon_61e4c340fa710c9722a5463a4c1d5c95);
+            
+    
+            var marker_3a6d41a741558616be315bdce60a89fa = L.marker(
+                [22.3193038, 73.1351286],
+                {
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var div_icon_d70f1624203ea826ac3aefa2bb02473e = L.divIcon({
+  "html": "\u003cdiv class=\"pulse pulse-red\"\u003e\u003c/div\u003e",
+  "iconSize": [20, 20],
+  "className": "empty",
+});
+        
+    
+        var popup_08ccadda76ad39b0753208ff1df68057 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_77628579ff85856434468d5a72aadc65 = $(`<div id="html_77628579ff85856434468d5a72aadc65" style="width: 100.0%; height: 100.0%;">             <div style='width:200px'>                 <h4>unnamed road, Gotri, - 391101, Gujarat, India</h4>                 <h4>🚧 Hazard</h4>                 <p>Dhfngjgjhccbctzrahfjgj vjgjg</p>                 <small>2025-09-03 23:36</small>             </div>             </div>`)[0];
+                popup_08ccadda76ad39b0753208ff1df68057.setContent(html_77628579ff85856434468d5a72aadc65);
+            
+        
+
+        marker_3a6d41a741558616be315bdce60a89fa.bindPopup(popup_08ccadda76ad39b0753208ff1df68057)
+        ;
+
+        
+    
+    
+            marker_3a6d41a741558616be315bdce60a89fa.bindTooltip(
+                `<div>
+                     🚧 Hazard
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3a6d41a741558616be315bdce60a89fa.setIcon(div_icon_d70f1624203ea826ac3aefa2bb02473e);
+            
+    
+            var marker_5d3075c4ca8ea61f09ca7b236cd0eb04 = L.marker(
+                [22.3193038, 73.1351286],
+                {
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var div_icon_9efb44388b1d9ceaf6a96049d2c0ca34 = L.divIcon({
+  "html": "\u003cdiv class=\"pulse pulse-red\"\u003e\u003c/div\u003e",
+  "iconSize": [20, 20],
+  "className": "empty",
+});
+        
+    
+        var popup_09c49ee2fecd5ad8788b87b17098c7fa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_95d2466bd39a8b89c0fcaec73ad9b757 = $(`<div id="html_95d2466bd39a8b89c0fcaec73ad9b757" style="width: 100.0%; height: 100.0%;">             <div style='width:200px'>                 <h4>unnamed road, Gotri, - 391101, Gujarat, India</h4>                 <h4>🚧 Hazard</h4>                 <p>Thihtnkoeechibbmlawfthiijgyvvhklkltrddvb</p>                 <small>2025-09-03 23:48</small>             </div>             </div>`)[0];
+                popup_09c49ee2fecd5ad8788b87b17098c7fa.setContent(html_95d2466bd39a8b89c0fcaec73ad9b757);
+            
+        
+
+        marker_5d3075c4ca8ea61f09ca7b236cd0eb04.bindPopup(popup_09c49ee2fecd5ad8788b87b17098c7fa)
+        ;
+
+        
+    
+    
+            marker_5d3075c4ca8ea61f09ca7b236cd0eb04.bindTooltip(
+                `<div>
+                     🚧 Hazard
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5d3075c4ca8ea61f09ca7b236cd0eb04.setIcon(div_icon_9efb44388b1d9ceaf6a96049d2c0ca34);
+            
+    
+            var marker_0c049fdb7a145b23068a4beb2b87a282 = L.marker(
+                [22.2973142, 73.1942567],
+                {
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var div_icon_fea1769e3b9cff7a573a2abfa1131e0d = L.divIcon({
+  "html": "\u003cdiv class=\"pulse pulse-blue\"\u003e\u003c/div\u003e",
+  "iconSize": [20, 20],
+  "className": "empty",
+});
+        
+    
+        var popup_9e0bb7f03780ea5133cc4cf3f4280d65 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_14257e4f08531d94411eaf24928f65d6 = $(`<div id="html_14257e4f08531d94411eaf24928f65d6" style="width: 100.0%; height: 100.0%;">             <div style='width:200px'>                 <h4>vadodara</h4>                 <h4>⚠️ Information</h4>                 <p>jfa;lkfai</p>                 <small>2025-09-04 11:12</small>             </div>             </div>`)[0];
+                popup_9e0bb7f03780ea5133cc4cf3f4280d65.setContent(html_14257e4f08531d94411eaf24928f65d6);
+            
+        
+
+        marker_0c049fdb7a145b23068a4beb2b87a282.bindPopup(popup_9e0bb7f03780ea5133cc4cf3f4280d65)
+        ;
+
+        
+    
+    
+            marker_0c049fdb7a145b23068a4beb2b87a282.bindTooltip(
+                `<div>
+                     ⚠️ Information
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0c049fdb7a145b23068a4beb2b87a282.setIcon(div_icon_fea1769e3b9cff7a573a2abfa1131e0d);
+            
+    
+            var marker_4e134d14cb6b42ef7d05c9a9d514af78 = L.marker(
+                [22.3251, 73.2017],
+                {
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+    
+            var div_icon_7da0450f43d87bb04c13f2c0399989a7 = L.divIcon({
+  "html": "\u003cdiv class=\"pulse pulse-red\"\u003e\u003c/div\u003e",
+  "iconSize": [20, 20],
+  "className": "empty",
+});
+        
+    
+        var popup_9ab73ea521a2a5a0259573e2eaf193de = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_afe5a1c0d7109705215e67eea3b0ac2d = $(`<div id="html_afe5a1c0d7109705215e67eea3b0ac2d" style="width: 100.0%; height: 100.0%;">             <div style='width:200px'>                 <h4>unnamed road, Nava Bazaar, Vadodara - 390001, Gujarat, India</h4>                 <h4>🚧 Hazard</h4>                 <p>sdlja;on</p>                 <small>2025-09-04 11:13</small>             </div>             </div>`)[0];
+                popup_9ab73ea521a2a5a0259573e2eaf193de.setContent(html_afe5a1c0d7109705215e67eea3b0ac2d);
+            
+        
+
+        marker_4e134d14cb6b42ef7d05c9a9d514af78.bindPopup(popup_9ab73ea521a2a5a0259573e2eaf193de)
+        ;
+
+        
+    
+    
+            marker_4e134d14cb6b42ef7d05c9a9d514af78.bindTooltip(
+                `<div>
+                     🚧 Hazard
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4e134d14cb6b42ef7d05c9a9d514af78.setIcon(div_icon_7da0450f43d87bb04c13f2c0399989a7);
+            
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_7667138ca7fc252d402b85bd9ce9ce5b);
+        
+</script>
+</html>
