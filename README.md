@@ -1,4 +1,4 @@
-[readme-studio-generated.md](https://github.com/user-attachments/files/24420137/readme-studio-generated.md)
+
 # 🚀 Live Crisis Reporter
 
 <div align="center">
